@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>TaskFlow — To-Do App</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@300;400;500;600&family=DM+Serif+Display&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+
+  <!-- Sidebar -->
+  <aside class="sidebar">
+    <div class="brand">
+      <span class="brand-icon">✦</span>
+      <span class="brand-name">TaskFlow</span>
+    </div>
+
+    <div class="lists-header">
+      <span>My Lists</span>
+      <button class="btn-new-list" id="btnNewList" title="New list">+</button>
+    </div>
+
+    <ul class="list-nav" id="listNav"></ul>
+
+    <div class="sidebar-footer">
+      <div class="stat-row">
+        <span id="statTotal">0 tasks</span>
+        <span id="statDone">0 done</span>
+      </div>
+    </div>
+  </aside>
+
+  <!-- Main content -->
+  <main class="main">
+    <header class="main-header">
+      <div class="header-left">
+        <h1 class="list-title" id="listTitle">Inbox</h1>
+        <span class="task-count" id="taskCount"></span>
+      </div>
+      <div class="header-right">
+        <select class="filter-select" id="filterSelect">
+          <option value="all">All tasks</option>
+          <option value="pending">Pending</option>
+          <option value="completed">Completed</option>
+          <option value="overdue">Overdue</option>
+        </select>
+        <button class="btn-delete-list" id="btnDeleteList" title="Delete list">🗑 Delete List</button>
+      </div>
+    </header>
+
+    <!-- Add task bar -->
+    <div class="add-task-bar">
+      <input type="text" id="newTaskInput" class="task-input" placeholder="Add a task…" maxlength="200" />
+      <input type="datetime-local" id="newTaskDate" class="date-input" />
+      <button class="btn-add" id="btnAddTask">Add</button>
+    </div>
+
+    <!-- Task list -->
+    <ul class="task-list" id="taskList"></ul>
+
+    <!-- Empty state -->
+    <div class="empty-state" id="emptyState">
+      <div class="empty-icon">◎</div>
+      <p>No tasks here yet.<br>Add one above to get started.</p>
+    </div>
+  </main>
+
+  <!-- Edit Modal -->
+  <div class="modal-overlay" id="modalOverlay">
+    <div class="modal">
+      <h2 class="modal-title">Edit Task</h2>
+      <label class="modal-label">Task name</label>
+      <input type="text" id="editTaskInput" class="modal-input" maxlength="200" />
+      <label class="modal-label">Date & Time</label>
+      <input type="datetime-local" id="editTaskDate" class="modal-input" />
+      <label class="modal-label">Move to list</label>
+      <select id="editTaskList" class="modal-input"></select>
+      <div class="modal-actions">
+        <button class="btn-cancel" id="btnCancelEdit">Cancel</button>
+        <button class="btn-save" id="btnSaveEdit">Save changes</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- New list modal -->
+  <div class="modal-overlay" id="newListOverlay">
+    <div class="modal modal-sm">
+      <h2 class="modal-title">New List</h2>
+      <label class="modal-label">List name</label>
+      <input type="text" id="newListInput" class="modal-input" maxlength="40" placeholder="e.g. Work, Personal…" />
+      <div class="modal-actions">
+        <button class="btn-cancel" id="btnCancelList">Cancel</button>
+        <button class="btn-save" id="btnSaveList">Create</button>
+      </div>
+    </div>
+  </div>
+
+  <script src="script.js"></script>
+</body>
+</html>
